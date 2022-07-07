@@ -1,11 +1,11 @@
 ---
 lab:
     title: 'Lab A AzureAD and Salesforce'
-    learning path: 'A'
+    learning path: '01'
     module: '-'
 ---
 
-# ラボ A: Azure ADとSalesforceでSSOを実装する
+# ラボ 01: Azure ADとSalesforceでSSOを実装する
 
 ## ラボ シナリオ
 
@@ -461,5 +461,5 @@ AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設
 
 
 
-以上でLabAの演習は終了となります。お疲れ様でした。
+以上でLab01の演習は終了となります。お疲れ様でした。
 
