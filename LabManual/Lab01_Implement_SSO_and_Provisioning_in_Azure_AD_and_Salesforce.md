@@ -33,7 +33,7 @@ AzureADでシングルサインオンとプロビジョニングを実装し、�
 
 1. [https://developer.salesforce.com/signup](https://developer.salesforce.com/signup)にアクセスします。
 
-2. **「Sign up for your Salesforce Developer Edition」**が表示されます。次の項目を入力し、チェックボックスにすべてチェックを入れ、**「Sign me Up」**をクリックします。
+2. 「Sign up for your Salesforce Developer Edition」が表示されます。次の項目を入力し、チェックボックスにすべてチェックを入れ、**「Sign me Up」**をクリックします。
 
      > 注: XXXXはご自身のメールアドレス番号になります。
 
