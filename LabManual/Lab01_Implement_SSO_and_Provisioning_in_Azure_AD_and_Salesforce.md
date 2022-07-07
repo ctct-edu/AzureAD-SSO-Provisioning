@@ -33,7 +33,7 @@ AzureADでシングルサインオンとプロビジョニングを実装し、�
 
 1. [https://developer.salesforce.com/signup](https://developer.salesforce.com/signup)にアクセスします。
 
-2. 「Sign up for your Salesforce Developer Edition」が表示されます。次の項目を入力し、チェックボックスにすべてチェックを入れ、**「Sign me Up」**をクリックします。
+2. 「Sign up for your Salesforce Developer Edition」が表示されます。次の項目を入力し、チェックボックスにすべてチェックを入れ、「**Sign me Up**」をクリックします。
 
      > 注: XXXXはご自身のメールアドレス番号になります。
 
@@ -52,13 +52,13 @@ AzureADでシングルサインオンとプロビジョニングを実装し、�
 
      
 
-3. **「Please check your email to confirm your account.」**と表示されます。登録したメールアドレスに確認メールが送信されます。
+3. 「Please check your email to confirm your account.」と表示されます。登録したメールアドレスに確認メールが送信されます。
 
      ![aad-sso-009](./media/aad-sso-009.BMP)
 
      
 
-4. [https://outlook.live.com/](https://outlook.live.com/)にアクセスし、サインインします。
+4. 届いたメールを確認します。[https://outlook.live.com/](https://outlook.live.com/)にアクセスし、サインインします。
 
      | 項目                      | 値                                                       |
      | ------------------------- | -------------------------------------------------------- |
