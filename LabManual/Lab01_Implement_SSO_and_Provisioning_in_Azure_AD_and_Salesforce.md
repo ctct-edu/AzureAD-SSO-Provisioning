@@ -48,13 +48,13 @@ AzureADでシングルサインオンとプロビジョニングを実装し、�
      | Postal Code    | ctcXXXX.portal                                               |
      | Username       | `admin@ctcXXXX.onmicrosoft.com` (ラボ 準備で作成したユーザーを指定) |
 
-     ![aad-sso-008](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-008.BMP)
+     ![aad-sso-008](./media/aad-sso-008.BMP)
 
      
 
 3. **「Please check your email to confirm your account.」**と表示されます。登録したメールアドレスに確認メールが送信されます。
 
-     ![aad-sso-009](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-009.BMP)
+     ![aad-sso-009](./media/aad-sso-009.BMP)
 
      
 
@@ -65,13 +65,13 @@ AzureADでシングルサインオンとプロビジョニングを実装し、�
      | メール、電話、またはskype | `ctcXXXX@outlook.jp` (ラボ 準備で作成したユーザーを指定) |
      | パスワード                | Pa55w.rd1234                                             |
 
-     ![aad-sso-010](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-010.BMP)
+     ![aad-sso-010](./media/aad-sso-010.BMP)
 
      
 
 5. 受信トレイにある「Salesforce へようこそ: アカウントを確認してください」というメールを開き、「アカウントを確認」をクリックします。
 
-     ![aad-sso-011](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-011.BMP)
+     ![aad-sso-011](./media/aad-sso-011.BMP)
 
      
 
@@ -84,13 +84,13 @@ AzureADでシングルサインオンとプロビジョニングを実装し、�
      | セキュリティの質問     | 出身地は     |
      | 回答                   | 日本         |
 
-     ![aad-sso-012](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-012.BMP)
+     ![aad-sso-012](./media/aad-sso-012.BMP)
 
      
 
 7. 「設定|ホーム」画面にリダイレクトされます。Salesforceの登録が完了しました。
 
-     ![aad-sso-013](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-013.BMP)
+     ![aad-sso-013](./media/aad-sso-013.BMP)
 
 
 
@@ -100,25 +100,25 @@ Azure ADとSalesforce間ではSAMLによってに認証を連携することが�
 
 1. 「設定|ホーム」画面の左側ツリーにあるIDを展開し、「シングルサインオン」をクリックします。
 
-     ![aad-sso-014](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-014.BMP)
+     ![aad-sso-014](./media/aad-sso-014.BMP)
 
      
 
 2. 「シングルサインオン設定」画面にて、画面中央にある「編集」をクリックします。
 
-     ![aad-sso-015](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-015.BMP)
+     ![aad-sso-015](./media/aad-sso-015.BMP)
 
      
 
 3. 「SAML を使用した統合シングルサインオン」の項目にある「SAMLを有効化」のチェックボックスにチェックを入れ、「保存」をクリックします。
 
-     ![aad-sso-016](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-016.BMP)
+     ![aad-sso-016](./media/aad-sso-016.BMP)
 
      
 
 4. 画面が切り替わり、再び「シングルサインオン設定」画面で「SAML を有効化」にチェックがあれば完了です。
 
-![aad-sso-017](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-017.BMP)
+![aad-sso-017](./media/aad-sso-017.BMP)
 
 
 
@@ -141,13 +141,13 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
 3. 上部検索バーに「エンタープライズ アプリケーション」と入力し、該当サービスをクリックします。
 
-     ![aad-sso-018](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-018.BMP)
+     ![aad-sso-018](./media/aad-sso-018.BMP)
 
      
 
 4. 「エンタープライズ アプリケーション | すべてのアプリケーション」ブレードが表示されます。画面中央にある「+新しいアプリケーション」をクリックします。
 
-     ![aad-sso-019](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-019.BMP)
+     ![aad-sso-019](./media/aad-sso-019.BMP)
 
      
 
@@ -155,31 +155,31 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
      > 注:似た項目で「salesforce sandbox」がありますが、こちらは選択しないでください。
 
-     ![aad-sso-020](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-020.BMP)
+     ![aad-sso-020](./media/aad-sso-020.BMP)
 
      
 
 6. クリック後に、画面右に「Salesforce」の登録画面が表示されます。何も変更せず「作成」をクリックします。
 
-     ![aad-sso-021](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-021.BMP)
+     ![aad-sso-021](./media/aad-sso-021.BMP)
 
      
 
 7. 作成をクリック後、画面が遷移され「Salesforce | 概要」ブレードが表示されます。画面左側にある「シングルサインオン」をクリックします。
 
-     ![aad-sso-022](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-022.BMP)
+     ![aad-sso-022](./media/aad-sso-022.BMP)
 
      
 
 8. 「Salesforce | シングル サインオン」ブレードが表示されます。シングルサインオン方式の選択で「SAML」をクリックします。
 
-     ![aad-sso-023](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-023.BMP)
+     ![aad-sso-023](./media/aad-sso-023.BMP)
 
      
 
 9. 「Salesforce | SAML ベースのサインオン」画面が表示されます。画面中央の必須項目を埋める必要があります。画面はこのままにし、次のタスクへ進みます。
 
-![aad-sso-024](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-024.BMP)
+![aad-sso-024](./media/aad-sso-024.BMP)
 
 
 
@@ -196,7 +196,7 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
      | ユーザー名 | `ctcXXXX@outlook.jp` |
      | パスワード | Pa55w.rd1234         |
 
-     ![aad-sso-025](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-025.BMP)
+     ![aad-sso-025](./media/aad-sso-025.BMP)
 
      
 
@@ -204,13 +204,13 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
      > 注:必ずしも表示されるとは限りません。
 
-     ![aad-sso-026](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-026.BMP)
+     ![aad-sso-026](./media/aad-sso-026.BMP)
 
      
 
 4. 「設定|ホーム画面」が表示されます。画面左側のツリーより「会社の設定」を展開し、「私のドメイン」をクリックします。
 
-     ![aad-sso-027](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-027.BMP)
+     ![aad-sso-027](./media/aad-sso-027.BMP)
 
      
 
@@ -218,7 +218,7 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
      > 例：ctcXXXX-dev-ed.my.salesforce.com
 
-     ![aad-sso-028](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-028.BMP)
+     ![aad-sso-028](./media/aad-sso-028.BMP)
 
      
 
@@ -238,7 +238,7 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
      >
      > 　 さらに「Salesforce | 概要」ブレードから左側ツリーにある「シングルサインオン」をクリックします。
 
-     ![aad-sso-029](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-029.BMP)
+     ![aad-sso-029](./media/aad-sso-029.BMP)
 
      
 
@@ -256,25 +256,25 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
      | 応答 URL               | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
      | サインオン URL         | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
 
-     ![aad-sso-030](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-030.BMP)
+     ![aad-sso-030](./media/aad-sso-030.BMP)
 
      
 
 4. 「Salesforce | SAML ベースのサインオン」ブレードに戻り、画面中央にある**「このアプリケーションをTest」**をクリックします。
 
-     ![aad-sso-032](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-032.BMP)
+     ![aad-sso-032](./media/aad-sso-032.BMP)
 
      
 
 5. 「Salesforce でシングル サインオンをTest」画面が表示されます。「サインインをテストする方法を選択」を**「現在のユーザーとしてサインイン」**を選び、**「サインインのテスト」**をクリックします。
 
-     ![aad-sso-033](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-033.BMP)
+     ![aad-sso-033](./media/aad-sso-033.BMP)
 
      
 
 6. Webブラウザの別タブ(または別ウィンドウ)が開き、Salesforceの画面が表示されれば成功です。
 
-     ![aad-sso-034](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-034.BMP)
+     ![aad-sso-034](./media/aad-sso-034.BMP)
 
      
 
@@ -284,13 +284,13 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
      > 注:ダウンロードしたデータは、次のタスクで使用します。
 
-     ![aad-sso-035](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-035.BMP)
+     ![aad-sso-035](./media/aad-sso-035.BMP)
 
      
 
 9. **「Salesforce.xml」**が自身のPCにダウンロードされたことを確認します。
 
-     ![aad-sso-036](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-036.BMP)
+     ![aad-sso-036](./media/aad-sso-036.BMP)
 
      
 
@@ -304,13 +304,13 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
 1. SalesforceのWebブラウザ画面に戻ります。
 
-     ![aad-sso-037](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-037.BMP)
+     ![aad-sso-037](./media/aad-sso-037.BMP)
 
      
 
 2. 画面右側のツリーから「ID」を展開し、**「シングルサインオン設定」**を表示します。
 
-     ![aad-sso-038](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-038.BMP)
+     ![aad-sso-038](./media/aad-sso-038.BMP)
 
      
 
@@ -318,7 +318,7 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
 4. 「SAML シングルサインオン構成」画面の中央にある「ファイルを選択」をクリックし、前の手順でダウンロードした「Salesforce.xml」をアップロードします。アップロード後に**「作成」**をクリックします。
 
-     ![aad-sso-040](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-040.BMP)
+     ![aad-sso-040](./media/aad-sso-040.BMP)
 
      
 
@@ -329,31 +329,31 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
      | 名前      | AzureAD |
      | API参照名 | AzureAD |
 
-     ![aad-sso-041](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-041.BMP)
+     ![aad-sso-041](./media/aad-sso-041.BMP)
 
      
 
 6. 「SAML シングルサインオン構成」が表示されます。
 
-     ![aad-sso-042](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-042.BMP)
+     ![aad-sso-042](./media/aad-sso-042.BMP)
 
      
 
 7. 画面左側ツリーにある「会社の設定」を展開し、「私のドメイン」を選択します。
 
-     ![aad-sso-043](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-043.BMP)
+     ![aad-sso-043](./media/aad-sso-043.BMP)
 
      
 
 8. 「私のドメイン」画面の下部に「認証設定」があります。編集をクリックします。
 
-     ![aad-sso-044](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-044.BMP)
+     ![aad-sso-044](./media/aad-sso-044.BMP)
 
      
 
 9. 「認証設定」画面で「認証サービス」があります。「AzureAD」にチェックを入れて「保存」をクリックします。
 
-     ![aad-sso-045](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-045.BMP)
+     ![aad-sso-045](./media/aad-sso-045.BMP)
 
      
 
@@ -373,19 +373,19 @@ AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設
    >
    > 　 さらに「Salesforce | 概要」ブレードから左側ツリーにある「シングルサインオン」をクリックします。
 
-   ![aad-sso-046](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-046.BMP)
+   ![aad-sso-046](./media/aad-sso-046.BMP)
 
    
 
 2. 画面左側ツリーにある「所有者」をクリックします。その後、「+追加」をクリックします。
 
-   ![aad-sso-047](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-047.BMP)
+   ![aad-sso-047](./media/aad-sso-047.BMP)
 
    
 
 3. 「所有者の選択」画面が表示されます。`admin@ctcXXXX.onmicrosoft.com`のユーザーをクリックし、「選択」をクリックします。
 
-   ![aad-sso-048](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-048.BMP)
+   ![aad-sso-048](./media/aad-sso-048.BMP)
 
    
 
@@ -393,7 +393,7 @@ AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設
 
 5. 画面左側ツリーにある「ユーザーとグループ」をクリックします。その後「+ユーザーまたはグループの追加」をクリックします。
 
-   ![aad-sso-049](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-049.BMP)
+   ![aad-sso-049](./media/aad-sso-049.BMP)
 
    
 
@@ -410,7 +410,7 @@ AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設
    | ユーザー                 | ctcXXXX              |
    | ロールを選択してください | System Administrator |
 
-   ![aad-sso-050](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-050.BMP)
+   ![aad-sso-050](./media/aad-sso-050.BMP)
 
    
 
@@ -440,7 +440,7 @@ AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設
 
 2. サインイン画面の下部にある「AzureAD」をクリックします。
 
-   ![aad-sso-052](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-052.BMP)
+   ![aad-sso-052](./media/aad-sso-052.BMP)
 
    
 
@@ -457,7 +457,7 @@ AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設
 
 4. Salesforceの画面が表示されました。これでAzureADユーザーを使用してSalesforceにSSOすることが可能になります。
 
-   ![aad-sso-053](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-053.BMP)
+   ![aad-sso-053](./media/aad-sso-053.BMP)
 
 
 

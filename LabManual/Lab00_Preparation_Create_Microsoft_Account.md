@@ -41,7 +41,7 @@ AzureADを使用した演習では「Microsoftアカウント」または「Azur
     | 会社名                 | Fabrikam Corporation                              |
     | 組織の規模             | 1人                                               |
 
-    ![aad-sso-001](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-001.BMP)
+    ![aad-sso-001](./media/aad-sso-001.BMP)
 
     
 
@@ -55,7 +55,7 @@ AzureADを使用した演習では「Microsoftアカウント」または「Azur
     | 会社名     | ctcXXXX      |
     | パスワード | Pa55w.rd1234 |
 
-    ![aad-sso-002](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-002.BMP)
+    ![aad-sso-002](./media/aad-sso-002.BMP)
 
     
 
@@ -63,19 +63,19 @@ AzureADを使用した演習では「Microsoftアカウント」または「Azur
 
     > 注:音声電話認証でも構いません。
 
-    ![aad-sso-003](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-003.BMP)
+    ![aad-sso-003](./media/aad-sso-003.BMP)
 
     
 
 5. 「ID を検証します」画面で、SMSで受信した番号を入力し、「アカウントの作成」をクリックします。
 
-    ![aad-sso-004](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-004.BMP)
+    ![aad-sso-004](./media/aad-sso-004.BMP)
 
     
 
 6. 「この情報を保存してください。」画面で、「サインインページ」と「ユーザーID」をメモし、「準備が整いました」をクリックします。
 
-    ![aad-sso-005](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-005.BMP)
+    ![aad-sso-005](./media/aad-sso-005.BMP)
 
      
 
@@ -85,7 +85,7 @@ AzureADを使用した演習では「Microsoftアカウント」または「Azur
     >
     > 　 Azure ADの検証において、Azureサブスクリプションは必要ありません。
 
-    ![aad-sso-006](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-006.BMP)
+    ![aad-sso-006](./media/aad-sso-006.BMP)
 
     
 
@@ -102,7 +102,7 @@ AzureADを使用した演習では「Microsoftアカウント」または「Azur
     | メール、電話、またはskype | `admin@ctcXXXX.onmicrosoft.com` |
     | パスワード                | Pa55w.rd1234                    |
 
-    ![aad-sso-007](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-007.BMP)
+    ![aad-sso-007](./media/aad-sso-007.BMP)
 
     
 
