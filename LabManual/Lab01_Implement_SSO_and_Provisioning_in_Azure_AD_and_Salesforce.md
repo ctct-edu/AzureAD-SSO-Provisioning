@@ -252,9 +252,9 @@ Azure ADをクラウドアプリケーションと連携する場合、エンタ
 
      | 項目                   | 値                                                           |
      | ---------------------- | ------------------------------------------------------------ |
-     | 識別子(エンティティID) | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
-     | 応答 URL               | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
-     | サインオン URL         | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
+     | 識別子(エンティティID) | `https://あなたがメモしたURL`　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
+     | 応答 URL               | `https://あなたがメモしたURL`　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
+     | サインオン URL         | `https://あなたがメモしたURL`　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
 
      ![aad-sso-030](./media/aad-sso-030.BMP)
 
