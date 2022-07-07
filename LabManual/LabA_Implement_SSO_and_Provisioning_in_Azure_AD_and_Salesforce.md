@@ -5,7 +5,7 @@ lab:
     module: '-'
 ---
 
-# ラボ A: Azure ADとSalesforceでSSOとプロビジョニングを実装する
+# ラボ A: Azure ADとSalesforceでSSOを実装する
 
 ## ラボ シナリオ
 
@@ -21,273 +21,445 @@ AzureADでシングルサインオンとプロビジョニングを実装し、�
 
 「Lab_Preparation_Create_Microsoft_Account」を確認し、用意してください。
 
-
-
 #### 推定時間: 90 分
 
-## 演習 1 - 
+------
 
-### タスク 1 - 仮想マシンを作成する
 
-1. [https://portal.azure.com](https://portal.azure.com) に講師から指示された ID とパスワードでサインインします。
 
-     | 設定       | 値                                         |
-     | ---------- | ------------------------------------------ |
-     | ユーザー名 | **azurestudent##@ctctedu.onmicrosoft.com** |
-     | パスワード | Pa55w.rd1234                               |
+### タスク 1 - Salesforceの利用を開始する
 
-     > 注：##は受講番号です。01 ～ 99の数字が入ります。
+このタスクではSalesforceの無償アカウントを作成します。
 
-     ![AZ900_Lab1_01](./media/AZ900_Lab1_01.png)
+1. [https://developer.salesforce.com/signup](https://developer.salesforce.com/signup)にアクセスします。
+
+2. **「Sign up for your Salesforce Developer Edition」**が表示されます。次の項目を入力し、チェックボックスにすべてチェックを入れ、**「Sign me Up」**をクリックします。
+
+     > 注: XXXXはご自身のメールアドレス番号になります。
+
+     | 項目           | 値                                                           |
+     | -------------- | ------------------------------------------------------------ |
+     | First Name     | XXXX                                                         |
+     | Last Name      | ctc                                                          |
+     | Email          | `ctcXXXX@outlook.jp` (ラボ 準備で作成したユーザーを指定)     |
+     | Role           | Developer                                                    |
+     | Company        | ctcXXXX                                                      |
+     | Country/Region | Japan                                                        |
+     | Postal Code    | ctcXXXX.portal                                               |
+     | Username       | `admin@ctcXXXX.onmicrosoft.com` (ラボ 準備で作成したユーザーを指定) |
+
+     ![aad-sso-008](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-008.BMP)
 
      
 
-2. ポータルメニューの検索バーに［Virtual Machine］と入力して検索結果を選択します。
+3. **「Please check your email to confirm your account.」**と表示されます。登録したメールアドレスに確認メールが送信されます。
 
-     ![AZ900_Lab1_02](./media/AZ900_Lab1_02.png)
-
-     
-
-3. 画面左上にある[**＋作成**]→「**＋仮想マシン**」を選択します。
-
-     ![AZ900_Lab1_03](./media/AZ900_Lab1_03.png)
+     ![aad-sso-009](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-009.BMP)
 
      
 
-4. 仮想マシンの作成画面が表示されます。「**プロジェクトの詳細**」を入力します。
+4. [https://outlook.live.com/](https://outlook.live.com/)にアクセスし、サインインします。
 
-     | 設定               | 値                                   |
-     | ------------------ | ------------------------------------ |
-     | サブスクリプション | **Microsoft Azure スポンサープラン** |
-     | リソースグループ   | **AzureStudent##**                   |
+     | 項目                      | 値                                                       |
+     | ------------------------- | -------------------------------------------------------- |
+     | メール、電話、またはskype | `ctcXXXX@outlook.jp` (ラボ 準備で作成したユーザーを指定) |
+     | パスワード                | Pa55w.rd1234                                             |
 
-     > 注：##は受講番号です。01 ～ 99の数字が入ります。
+     ![aad-sso-010](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-010.BMP)
+
+     
+
+5. 受信トレイにある「Salesforce へようこそ: アカウントを確認してください」というメールを開き、「アカウントを確認」をクリックします。
+
+     ![aad-sso-011](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-011.BMP)
+
+     
+
+6. Salesforceの「パスワードを変更する」ページにリダイレクトされます。次の項目を入力し、「パスワード変更」をクリックします。
+
+     | 項目                   | 値           |
+     | ---------------------- | ------------ |
+     | 新しいパスワード       | Pa55w.rd1234 |
+     | 新しいパスワードの確認 | Pa55w.rd1234 |
+     | セキュリティの質問     | 出身地は     |
+     | 回答                   | 日本         |
+
+     ![aad-sso-012](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-012.BMP)
+
+     
+
+7. 「設定|ホーム」画面にリダイレクトされます。Salesforceの登録が完了しました。
+
+     ![aad-sso-013](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-013.BMP)
+
+
+
+### タスク 2 - SalesforceでSAML認証を有効化する
+
+Azure ADとSalesforce間ではSAMLによってに認証を連携することが可能になります。ここでは、SalesforceのSAML認証を有効にします。
+
+1. 「設定|ホーム」画面の左側ツリーにあるIDを展開し、「シングルサインオン」をクリックします。
+
+     ![aad-sso-014](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-014.BMP)
+
+     
+
+2. 「シングルサインオン設定」画面にて、画面中央にある「編集」をクリックします。
+
+     ![aad-sso-015](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-015.BMP)
+
+     
+
+3. 「SAML を使用した統合シングルサインオン」の項目にある「SAMLを有効化」のチェックボックスにチェックを入れ、「保存」をクリックします。
+
+     ![aad-sso-016](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-016.BMP)
+
+     
+
+4. 画面が切り替わり、再び「シングルサインオン設定」画面で「SAML を有効化」にチェックがあれば完了です。
+
+![aad-sso-017](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-017.BMP)
+
+
+
+### タスク 3 -Azure のエンタープライズアプリケーションでSalesforceを登録する。
+
+Azure ADをクラウドアプリケーションと連携する場合、エンタープライズアプリケーションで登録を行います。
+
+1. Webブラウザを開き、「[https://portal.azure.com](https://portal.azure.com)」へアクセスします。
+
+2. サインインが求められます。以下のユーザー名とパスワードを入力し、サインインしてください。
+
+     > 注:XXXXはご自身のメールアドレス番号になります。
+
+     | 項目                      | 値                              |
+     | ------------------------- | :------------------------------ |
+     | メール、電話、またはskype | `admin@ctcXXXX.onmicrosoft.com` |
+     | パスワード                | Pa55w.rd1234                    |
+
+     
+
+3. 上部検索バーに「エンタープライズ アプリケーション」と入力し、該当サービスをクリックします。
+
+     ![aad-sso-018](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-018.BMP)
+
+     
+
+4. 「エンタープライズ アプリケーション | すべてのアプリケーション」ブレードが表示されます。画面中央にある「+新しいアプリケーション」をクリックします。
+
+     ![aad-sso-019](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-019.BMP)
+
+     
+
+5. 「Azure AD ギャラリーの参照」ブレードが表示されます。画面左側にある「アプリケーションの検索」に「salesforce」と入力し、「salesforce」をクリックします。
+
+     > 注:似た項目で「salesforce sandbox」がありますが、こちらは選択しないでください。
+
+     ![aad-sso-020](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-020.BMP)
+
+     
+
+6. クリック後に、画面右に「Salesforce」の登録画面が表示されます。何も変更せず「作成」をクリックします。
+
+     ![aad-sso-021](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-021.BMP)
+
+     
+
+7. 作成をクリック後、画面が遷移され「Salesforce | 概要」ブレードが表示されます。画面左側にある「シングルサインオン」をクリックします。
+
+     ![aad-sso-022](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-022.BMP)
+
+     
+
+8. 「Salesforce | シングル サインオン」ブレードが表示されます。シングルサインオン方式の選択で「SAML」をクリックします。
+
+     ![aad-sso-023](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-023.BMP)
+
+     
+
+9. 「Salesforce | SAML ベースのサインオン」画面が表示されます。画面中央の必須項目を埋める必要があります。画面はこのままにし、次のタスクへ進みます。
+
+![aad-sso-024](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-024.BMP)
+
+
+
+### タスク 4 -SSOに必要な情報をSalesforceのプロパティから取得する
+
+1. Webブラウザを開き「[https://login.salesforce.com/](https://login.salesforce.com/)」へアクセスします。
+
+2. サインインが求められます。以下のユーザー名とパスワードを入力し、サインインしてください。
+
+     > 注:XXXXはご自身のメールアドレス番号になります。
+
+     | 項目       | 値                   |
+     | ---------- | :------------------- |
+     | ユーザー名 | `ctcXXXX@outlook.jp` |
+     | パスワード | Pa55w.rd1234         |
+
+     ![aad-sso-025](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-025.BMP)
+
+     
+
+3. サインイン前に電話番号を登録する画面が表示される場合があります。その場合はご自身の電話番号を登録するか「後で知らせる」または「電話を登録しません」のいずれかを選択してください。
+
+     > 注:必ずしも表示されるとは限りません。
+
+     ![aad-sso-026](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-026.BMP)
+
+     
+
+4. 「設定|ホーム画面」が表示されます。画面左側のツリーより「会社の設定」を展開し、「私のドメイン」をクリックします。
+
+     ![aad-sso-027](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-027.BMP)
+
+     
+
+5. 「私のドメイン」画面が表示されます。画面中央にある**「現在の [私のドメイン] の URL」**に記載あるドメインをメモします。
+
+     > 例：ctcXXXX-dev-ed.my.salesforce.com
+
+     ![aad-sso-028](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-028.BMP)
+
+     
+
+6. 情報の取得は以上です。一度画面を最小化してください。
+
+
+
+### タスク 5 -エンタープライズアプリケーションのSSO設定を行い検証する
+
+エンタープライズアプリケーションのSSO設定に必要項目を入力し、SalesforceとAzureADユーザーがSSOできるか検証をします。
+
+1. Azure Prtalの「Salesforce | SAML ベースのサインオン」を再び表示します。
+
+     > 注:Webブラウザと閉じた場合は、上部検索バーに「エンタープライズアプリケーション」と入力し、サービスをクリックします。
      >
-     > 注：リソースグループがない場合は、「新規作成」を選択し、作成します。
-
-     ![AZ900_Lab1_04](./media/AZ900_Lab1_04.png)
-
-     
-
-5. 「**インスタンスの詳細**」を入力します。
-
-     | **設定**| **値**|
-     | :--- | :--- |
-     | 仮想マシン名 | **Server##-1** |
-     | 地域| **講師から指定されたリージョン** |
-     | 可用性オプション | **インフラストラクチャ冗長は必要ありません** |
-     | イメージ | **Windows Server 2019 Datacenter - Gen2** |
-     | Azure スポット インスタンス | **チェックなし** |
-     | サイズ | **Standard_DS1_V2** |
-
-     > 注：サイズが見つからない場合は、「すべてのサイズを表示」から検索してください。
+     > 　 その後「エンタープライズ アプリケーション | すべてのアプリケーション」ブレードより「Salesforce」をクリックします。
      >
-     > 　　または1コアのCPUであれば、別のシリーズを選択しても構いません。
+     > 　 さらに「Salesforce | 概要」ブレードから左側ツリーにある「シングルサインオン」をクリックします。
+
+     ![aad-sso-029](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-029.BMP)
 
      
 
-     ![AZ900_Lab1_05](./media/AZ900_Lab1_05.png)
+2. 「Salesforce | SAML ベースのサインオン」ブレードの画面中央にある「基本的なSAML構成」の「編集」をクリックします。
+
+3. 「基本的な SAML 構成」画面が表示されます。次の項目を入力し「保存」をクリックします。
+
+     > 注:XXXXはご自身のメールアドレス番号になります。
+
+     > 注:[あなたがメモしたURL]はタスク4-5でメモしたURLです。
+
+     | 項目                   | 値                                                           |
+     | ---------------------- | ------------------------------------------------------------ |
+     | 識別子(エンティティID) | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
+     | 応答 URL               | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
+     | サインオン URL         | https://あなたがメモしたURL　　　例:`https://ctcXXXX-dev-ed.my.salesforce.com` |
+
+     ![aad-sso-030](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-030.BMP)
 
      
 
-6. 「**管理者アカウント**」を入力します。
+4. 「Salesforce | SAML ベースのサインオン」ブレードに戻り、画面中央にある**「このアプリケーションをTest」**をクリックします。
 
-     | 設定       | 値               |
-     | ---------- | ---------------- |
-     | ユーザー名 | **student**      |
-     | パスワード | **Pa55w.rd1234** |
-
-     ![AZ900_Lab1_06](./media/AZ900_Lab1_06.png)
+     ![aad-sso-032](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-032.BMP)
 
      
 
-7. 「**受信ポートの規則**」を入力します。
+5. 「Salesforce でシングル サインオンをTest」画面が表示されます。「サインインをテストする方法を選択」を**「現在のユーザーとしてサインイン」**を選び、**「サインインのテスト」**をクリックします。
 
-     | 設定                 | 値                           |
-     | -------------------- | ---------------------------- |
-     | パブリック受信ポート | **選択したポートを許可する** |
-     | 受信ポートを選択     | **HTTP(80) , RDP(2289)**     |
-
-     ![AZ900_Lab1_07](./media/AZ900_Lab1_07.png)
+     ![aad-sso-033](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-033.BMP)
 
      
 
-8. ライセンス項目は変更せず、「**次：ディスク**」を選択します。
+6. Webブラウザの別タブ(または別ウィンドウ)が開き、Salesforceの画面が表示されれば成功です。
+
+     ![aad-sso-034](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-034.BMP)
 
      
 
-9. 「ディスクのオプション」で以下の選択してください。指定した箇所以外は変更しません。
+7. 一度、別タブ(または別ウィンドウ)で開いたSalesforceの画面と閉じます。
 
-   | 設定             | 値                                       |
-   | ---------------- | ---------------------------------------- |
-   | OSディスクの種類 | **Standard SSD(ローカル冗長ストレージ)** |
+8. 「Salesforce | SAML ベースのサインオン」ブレードに戻り、画面中央にある「SAML署名証明書」項目の**「フェデレーション メタデータ XML」**を**ダウンロード**します。
 
-   ![AZ900_Lab1_08](./media/AZ900_Lab1_08.png)
+     > 注:ダウンロードしたデータは、次のタスクで使用します。
 
-     
-
-10. 「**次：ネットワーク**」をクリックしてください。
+     ![aad-sso-035](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-035.BMP)
 
      
 
-11. 「**ネットワークインターフェイス**」の [**仮想ネットワーク**]の項目で「**新規作成**」を選択します。
+9. **「Salesforce.xml」**が自身のPCにダウンロードされたことを確認します。
 
-      ![AZ900_Lab1_09](./media/AZ900_Lab1_09.png)
-
-      
-
-12. 「**仮想ネットワークの作成**」で以下の項目を入力し、「**OK**」を押します。
-
-    | 設定              | 値              |
-    | ----------------- | --------------- |
-    | 名前              | **Vnet##**      |
-    | IPv4 アドレス空間 | **10.#.0.0/16** |
-    | サブネット名      | **Subnet01**    |
-    | アドレス範囲      | **10.#.1.0/24** |
-
-    > 注：##は受講番号です。01 ～ 99の数字が入ります。
-    >
-    > 注：#は受講番号です。01～09の人は"0"を抜かしてください。1 ～99の数字が入ります。
-
-    ![AZ900_Lab1_10](./media/AZ900_Lab1_10.png)
-
-    
-
-13. 項番 13 で設定した「仮想ネットワーク」と「サブネット」に変更されたことを確認します。
-
-      ![AZ900_Lab1_11](./media/AZ900_Lab1_11.png)
-
-      
-
-14. 以降の設定はデフォルトのまま、「**確認および作成**」を選択します。
-
-      
-
-15. 「検証に成功しました」と表示されたら、画面左下部の「**作成**」を選択します。
-
-      ![AZ900_Lab1_12](./media/AZ900_Lab1_12.png)
-
-      
-
-16. 2~5 分ほどで仮想マシンの作成が完了となります。
-
-     ![AZ900_Lab1_13](./media/AZ900_Lab1_13.png)
-
-      
-
-19. デプロイ完了後、「リソースに移動」を選択してください。
-
-    ![AZ900_Lab1_14](./media/AZ900_Lab1_14.png)
-    
-    
-    
-19. 作成した仮想マシンブレードが表示されます。 画面内にある「パブリック IP アドレス」をコピーしてメモ帳に控えてください。 
-
-      > 注：パブリックIPアドレスはWebページの閲覧時に使用します。
-
-![AZ900_Lab1_15](./media/AZ900_Lab1_15.png)
-
-
-
-### タスク 2 - 仮想マシンに「RDP 接続」でアクセスする
-
-> 注：Bastion 接続を行う場合は、[Lab01-02_Access_Virtual_Machine_Bastion](https://github.com/ctct-edu/az-900-lab-1day/blob/main/LabManual/Lab01_02_Access_Virtual_Machine_Bastion.md)へアクセスして実施してください。
-
-1. 仮想マシンブレードで「**接続**」を選択し「**RDP**」を選択します。
-
-   ![AZ900_Lab1_16](./media/AZ900_Lab1_16.png)
-
-   
-
-2. 画面中央にある「**RDP ファイルのダウンロード**」をクリックしてください。
-
-   ![AZ900_Lab1_17](./media/AZ900_Lab1_17.png)
-
-   
-
-3. ダウンロードした RDP ファイルをクリックし、Windows 認証を行いサインインしてください。
-
-   | **設定**   | **値**           |
-   | :--------- | :--------------- |
-   | ユーザー名 | **student**      |
-   | パスワード | **Pa55w.rd1234** |
-
-   ![AZ900_Lab1_18](./media/AZ900_Lab1_18.png)
-
-   
-
-4. Windows Server のデスクトップ画面が表示されます。初期設定で以下の項目が表示されます。「NO」を選択します。
-
-   > 注：この設定は演習には影響しません。
-
-   ![AZ900_Lab1_19](./media/AZ900_Lab1_19.png)
-
-   
-
-6. Server Manager が自動で起動しますが、全て「×」で閉じます。
-
-
-
-### タスク 3 - Internet Information Services (IIS)をインストールする
-
-1. スタートメニューから「**Powershell**」を起動します。
-
-   ![AZ900_Lab1_20](./media/AZ900_Lab1_20.png)
-
-   
-
-2. 起動した Powershell で以下のコマンドを実行してください。
-
-   ```powershell
-   Install-WindowsFeature -name Web-Server -IncludeManagementTools
-   ```
-
-   > 注：これはIIS をインストールするコマンドです。
-
-   ![AZ900_Lab1_21](./media/AZ900_Lab1_21.png)
-
-   
-
-3. IS のインストールが開始されます。100%になるまで待ちます。
-
-   ![AZ900_Lab1_22](./media/AZ900_Lab1_22.png)
-
-   
-
-4. .IIS のインストールが完了し Exit Code が「**Success**」になったことを確認してください。
-
-   ![AZ900_Lab1_23](./media/AZ900_Lab1_23.png)
-
-   
-
-5. リモートデスクトップ画面を最小化してください。
+     ![aad-sso-036](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-036.BMP)
 
      
 
-### タスク 4 - IIS のサンプルページに Web ブラウザーからアクセス
+10. この後の操作で再びAzure Portalを使用します。一度画面を最小化してください。
 
-1. . Web ブラウザーを起動してください。
 
-   > 注：ブラウザーはどれでも可能です
 
-   
+### タスク 6 -Salesforce上でフェデレーションメタデータを登録する
 
-2. アドレスバーに「**http://仮想マシンのパブリック IP アドレス**」を入力してください。
+検証が完了したため、別ユーザーでも恒久的にサインインできるようAzure上で生成されたフェデレーションメタデータをSalesforceへアップロードします。
 
-   > 注：タスク2-19でメモしたパブリックIPアドレスです。
+1. SalesforceのWebブラウザ画面に戻ります。
+
+     ![aad-sso-037](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-037.BMP)
+
+     
+
+2. 画面右側のツリーから「ID」を展開し、**「シングルサインオン設定」**を表示します。
+
+     ![aad-sso-038](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-038.BMP)
+
+     
+
+3. 「SAML シングルサインオン構成」の**「メタデータから新規作成」**をクリックします。
+
+4. 「SAML シングルサインオン構成」画面の中央にある「ファイルを選択」をクリックし、前の手順でダウンロードした「Salesforce.xml」をアップロードします。アップロード後に**「作成」**をクリックします。
+
+     ![aad-sso-040](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-040.BMP)
+
+     
+
+5. 「SAML シングルサインオン構成」画面が切り替わります。次の項目を入力し「保存」をクリックします。
+
+     | 項目      | 値      |
+     | --------- | ------- |
+     | 名前      | AzureAD |
+     | API参照名 | AzureAD |
+
+     ![aad-sso-041](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-041.BMP)
+
+     
+
+6. 「SAML シングルサインオン構成」が表示されます。
+
+     ![aad-sso-042](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-042.BMP)
+
+     
+
+7. 画面左側ツリーにある「会社の設定」を展開し、「私のドメイン」を選択します。
+
+     ![aad-sso-043](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-043.BMP)
+
+     
+
+8. 「私のドメイン」画面の下部に「認証設定」があります。編集をクリックします。
+
+     ![aad-sso-044](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-044.BMP)
+
+     
+
+9. 「認証設定」画面で「認証サービス」があります。「AzureAD」にチェックを入れて「保存」をクリックします。
+
+     ![aad-sso-045](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-045.BMP)
+
+     
+
+10. これでSalesforce側の設定は終わりです。一度画面を最小化してください。
+
+
+
+### タスク 7 -エンタープライズアプリケーションでSSOさせたいユーザーを設定する
+
+AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設定する必要があります。
+
+1. Azure Portalの画面に戻ります。
+
+   > 注:Webブラウザと閉じた場合は、上部検索バーに「エンタープライズアプリケーション」と入力し、サービスをクリックします。
    >
-   > 注：例としては http://11.22.33.44 などになります。
+   > 　 その後「エンタープライズ アプリケーション | すべてのアプリケーション」ブレードより「Salesforce」をクリックします。
+   >
+   > 　 さらに「Salesforce | 概要」ブレードから左側ツリーにある「シングルサインオン」をクリックします。
 
-   ![AZ900_Lab1_24](./media/AZ900_Lab1_24.png)
+   ![aad-sso-046](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-046.BMP)
 
    
 
-3. IIS のサンプルページが表示されます。
+2. 画面左側ツリーにある「所有者」をクリックします。その後、「+追加」をクリックします。
 
-   ![AZ900_Lab1_25](./media/AZ900_Lab1_25.png)
+   ![aad-sso-047](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-047.BMP)
+
+   
+
+3. 「所有者の選択」画面が表示されます。`admin@ctcXXXX.onmicrosoft.com`のユーザーをクリックし、「選択」をクリックします。
+
+   ![aad-sso-048](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-048.BMP)
+
+   
+
+4. 「Salesforce | 所有者」ブレードの一覧に選択したユーザーが表示されたことを確認します。
+
+5. 画面左側ツリーにある「ユーザーとグループ」をクリックします。その後「+ユーザーまたはグループの追加」をクリックします。
+
+   ![aad-sso-049](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-049.BMP)
+
+   
+
+6. 「割り当ての追加」画面で、次の項目を入力し「割り当て」をクリックします。
+
+   > 注:XXXXはご自身のメールアドレス番号になります。
+
+   > 参考:ここで指定している「ロール」はSalesforceに登録してあるユーザーの「プロファイル」と一致させています。
+   >
+   > 　　  Salesforceの画面で[管理]→[ユーザ]より確認できます。
+
+   | 項目                     | 値                   |
+   | ------------------------ | -------------------- |
+   | ユーザー                 | ctcXXXX              |
+   | ロールを選択してください | System Administrator |
+
+   ![aad-sso-050](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-050.BMP)
+
+   
+
+7. 「Salesforce | ユーザーとグループ」ブレードの一覧に選択したユーザーが表示されたことを確認します。
+
+8. これで、SSOさせるユーザーの登録が完了しました。一度画面を最小化してください。
+
+   > 参考:この手順ではAzureADにあるadminユーザーとSalesforceのユーザーが一致していたため、
+   >
+   > 　　 ユーザーとグループの追加でSSOを構成することができます。
+   >
+   > 　　 別途ユーザーをSSOさせたい場合、AzureADユーザーとSalesforceの両方で
+   >
+   > 　　 同一のサインインIDと役割(プロファイル)を構成しないとSSOは成功しません。
+   >
+   > 　　ユーザーを自動同期させる場合は、別途「プロビジョニング」の設定が必要になります。
 
 
 
-これで仮想マシンの構築とIISを構築し、Webサーバーを公開することができました。
+### タスク 8 -SalesforceにSSOでサインインする
 
-演習は終了です。お疲れ様でした。
+1. Webブラウザで**「https://あなたがメモしたURL」**にアクセスします。
+
+   > 例:`https://ctcXXXX-dev-ed.my.salesforce.com`
+
+   > 注:タスク5-3で入力したURLです。
+
+2. サインイン画面の下部にある「AzureAD」をクリックします。
+
+   ![aad-sso-052](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-052.BMP)
+
+   
+
+3. Microsoftのサインイン画面が表示されます。次の項目を入力し「割り当て」をクリックします。
+
+   > 注:XXXXはご自身のメールアドレス番号になります。
+
+   | 項目                | 値                            |
+   | ------------------- | ----------------------------- |
+   | メール、電話、Skpye | admin@ctcXXXX.onmicrosoft.com |
+   | パスワード          | Pa55w.rd1234                  |
+
+   
+
+4. Salesforceの画面が表示されました。これでAzureADユーザーを使用してSalesforceにSSOすることが可能になります。
+
+   ![aad-sso-053](C:\Users\otokita\Documents\AzureAD-SSO-Provisioning\LabManual\media\aad-sso-053.BMP)
+
+
+
+以上でLabAの演習は終了となります。お疲れ様でした。
+
