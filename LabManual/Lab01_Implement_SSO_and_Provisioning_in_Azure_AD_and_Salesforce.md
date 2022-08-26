@@ -21,7 +21,7 @@ AzureADでシングルサインオンを実装し、1つのユーザーでサイ
 
 「[Lab_Preparation_Create_Microsoft_Account](https://github.com/ctct-edu/AzureAD-SSO-Provisioning/blob/main/LabManual/Lab00_Preparation_Create_Microsoft_Account.md)」を確認し、用意してください。
 
-#### 推定時間: 90 分
+#### 推定時間: 60 分
 
 ------
 
