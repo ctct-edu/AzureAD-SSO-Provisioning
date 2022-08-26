@@ -432,7 +432,7 @@ AzureADユーザーでSalesforceにSSOする場合、ユーザーと役割を設
 
 ### タスク 8 -SalesforceにSSOでサインインする
 
-1. Webブラウザで「https://あなたがメモしたURL」にアクセスします。
+1. Webブラウザで「'https://あなたがメモしたURL'」にアクセスします。
 
    > 例:`https://ctcXXXX-dev-ed.my.salesforce.com`
 
