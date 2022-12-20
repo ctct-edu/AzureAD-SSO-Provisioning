@@ -21,7 +21,7 @@ AzureADでシングルサインオンを実装し、1つのユーザーでサイ
 
 「[Lab_Preparation_Create_Microsoft_Account](https://github.com/ctct-edu/AzureAD-SSO-Provisioning/blob/main/LabManual/Lab00_Preparation_Create_Microsoft_Account.md)」を確認し、用意してください。
 
-#### 推定時間: 60 分
+#### 推定時間: 40 分
 
 ------
 
@@ -41,7 +41,7 @@ AzureADでシングルサインオンを実装し、1つのユーザーでサイ
      | -------------- | ------------------------------------------------------------ |
      | First Name     | XXXX                                                         |
      | Last Name      | ctc                                                          |
-     | Email          | `ctcXXXX@outlook.jp` (ラボ 準備で作成したユーザーを指定)     |
+     | Email          | `admin@ctcXXXX.onmicrosoft.com` (ラボ 準備で作成したユーザーを指定) |
      | Role           | Developer                                                    |
      | Company        | ctcXXXX                                                      |
      | Country/Region | Japan                                                        |
@@ -60,10 +60,10 @@ AzureADでシングルサインオンを実装し、1つのユーザーでサイ
 
 4. 届いたメールを確認します。[https://outlook.live.com/](https://outlook.live.com/)にアクセスし、サインインします。
 
-     | 項目                      | 値                                                       |
-     | ------------------------- | -------------------------------------------------------- |
-     | メール、電話、またはskype | `ctcXXXX@outlook.jp` (ラボ 準備で作成したユーザーを指定) |
-     | パスワード                | Pa55w.rd1234                                             |
+     | 項目                      | 値                                                           |
+     | ------------------------- | ------------------------------------------------------------ |
+     | メール、電話、またはskype | `admin@ctcXXXX.onmicrosoft.com` (ラボ 準備で作成したユーザーを指定) |
+     | パスワード                | Pa55w.rd1234                                                 |
 
      ![aad-sso-010](./media/aad-sso-010.BMP)
 
